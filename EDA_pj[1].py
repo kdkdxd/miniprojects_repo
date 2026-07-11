@@ -6,7 +6,7 @@ import seaborn as sns
 import scipy.stats as stats
 import sys
 
-sys.stdout.reconfigure(encoding="utf-8")
+sys.stdout.reconfigure(encoding="utf-8")    
 
 np.random.seed(42)
 employees1 = pd.read_csv("employees1.csv")
@@ -101,6 +101,8 @@ ax.set_title("Relationship between Salary and Exp", fontname = "Arial", fontsize
 ax.legend(fontsize = 10)
 plt.tight_layout()
 plt.show
+
+
 # Salary According to Department
 
 desa_stat = (cleaned_em.groupby("Department")["Salary"]
