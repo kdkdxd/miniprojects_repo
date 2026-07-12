@@ -72,11 +72,11 @@ if len(cat_stats) > 0:
         ax.set_xlabel("Category", fontname = "Arial", fontsize = 14, fontweight = "bold")
         ax.set_ylabel("Total Revenue (Million VND)", fontname = "Arial", fontsize = 14, fontweight = "bold")
     plt.tight_layout()
-    plt.show()
+    plt.show
  
 
 
-
+print("It's not hard, It's just new.")
 
 
 
