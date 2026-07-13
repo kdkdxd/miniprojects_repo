@@ -9,6 +9,7 @@ import sys
 sys.stdout.reconfigure(encoding="utf-8")
 
 e_orders_raw = pd.read_csv("ecommerce_orders[2].csv", parse_dates=["OrderDate"])
+pd.options.display.float_format = '{:,.0f}'.format   #format :,0f
 
 #G1 GENERAL LOOK
 
@@ -60,20 +61,142 @@ print(f"\nCategories Stats : \n{cat_stats}")
 
 sum_all_cat = cat_stats["total_re"].sum()
 cat_stats["pct_re"] = (cat_stats["total_re"]/sum_all_cat*100).round(0)
+categories = cat_stats.index.tolist()
 
 print(cat_stats)
 
-if len(cat_stats) > 0:
-    fig,ax = plt.subplots(figsize=(10, 7), constrained_layout=True)
-    sns.barplot(x=cat_stats.index,y=cat_stats["total_re"], palette="Set1", ax = ax, edgecolor = "white")
-    for bar, val in zip (ax.patches, cat_stats["total_re"]):
-        ax.text(bar.get_x() + bar.get_width()/2, bar.get_height() + 1.5, f"{val/1e6:.2f}", ha = "center", va = "bottom",fontname = "Arial", fontsize = 10, fontweight="bold")
-        ax.set_title("Which Category has the biggest Revenue ?", fontname = "Arial", fontsize = 19, fontweight = "bold")
-        ax.set_xlabel("Category", fontname = "Arial", fontsize = 14, fontweight = "bold")
-        ax.set_ylabel("Total Revenue (Million VND)", fontname = "Arial", fontsize = 14, fontweight = "bold")
-    plt.tight_layout()
-    plt.show
+
+
+fig,axes = plt.subplots(1,3,figsize=(15, 5))
+
+#Total Revenue per Categories
+ax1 = axes[0] 
+sns.barplot(x=cat_stats.index,y=cat_stats["total_re"], palette="Set1", ax = ax1, edgecolor = "white")
+for bar1, val1 in zip (ax1.patches, cat_stats["total_re"]):
+    ax1.text(bar1.get_x() + bar1.get_width()/2, bar1.get_height() + 1.5, f"{val1/1e6:.2f}", ha = "center", va = "bottom",fontname = "Arial", fontsize = 10, fontweight="bold")
+ax1.set_title("Which Category has the biggest Revenue ?", fontname = "Arial", fontsize = 15, fontweight = "bold")
+ax1.set_xlabel("Category", fontname = "Arial", fontsize = 14, fontweight = "bold")
+ax1.set_ylabel("Total Revenue (Million VND)", fontname = "Arial", fontsize = 14, fontweight = "bold")
+plt.tight_layout()
+plt.show
+
+print(f"\nBest seller : {max(categories)} ")
  
+#Total orders
+ax2 = axes[1]
+sns.barplot(x=categories, y = cat_stats["count_re"], palette="Set2", ax=ax2, edgecolor = "white", width = 0.6)
+for bar2, val2 in zip(ax2.patches, cat_stats["count_re"]):
+    ax2.text(bar2.get_x() + bar2.get_width()/2, bar2.get_height() + 1.5, f"{val2}", fontname = "Arial", fontsize = 10, fontweight = "bold", ha = "center", va = "bottom")
+ax2.set_title("Total Orders per Category", fontname = "Arial", fontsize = 15, fontweight = "bold")
+ax2.set_xlabel("Category", fontname = "Arial", fontsize = 14, fontweight = "bold")
+ax2.set_ylabel("Orders", fontname = "Arial", fontsize = 14, fontweight = "bold")
+plt.tight_layout()
+plt.show
+
+#Mean revenue in different categories
+ax3 = axes[2]
+sns.barplot(x=categories, y = cat_stats["mean_re"], ax = ax3, palette="Set3", edgecolor = "white", width = 0.6)
+for bar3,val3 in zip(ax3.patches, cat_stats["mean_re"]):
+    ax3.text(bar3.get_x() + bar3.get_width()/2, bar3.get_height() + 1.5, f"{val3/1e6:.2f}", ha = "center", va = "bottom", fontname = "Arial", fontsize = 10, fontweight = "bold")
+ax3.set_title("Which cat has the highest mean revenue ?", fontname = "Arial", fontsize = 15, fontweight = "bold")
+ax3.set_xlabel("Category", fontname = "Arial", fontsize = 14, fontweight = "bold")
+ax3.set_ylabel("Mean Revenue (Million VND)", fontname = "Arial", fontsize = 14, fontweight = "bold")
+plt.tight_layout()
+plt.show
+
+plt.suptitle("Analysis Revenue acc Category", fontname = "Arial", fontsize = 17, fontweight = "bold")
+plt.tight_layout()
+plt.show
+
+
+print(df.head(10))
+
+#Top 10 best seller
+product_stats = df.groupby("Product").agg(
+    tt_pd_re = ("Revenue", "sum"),
+    tt_qty = ("Quantity","count"),
+    tt_ord = ("Revenue", "count")
+).round(0).sort_values("tt_pd_re", ascending=False)
+
+print(f"\nTop 10 Products : \n{product_stats.head(10)}")
+
+
+#Checking orders Outliers
+fig, ax  = plt.subplots(figsize=(8,5),constrained_layout = True)
+sns.boxplot(df["Quantity"], color = "#5AF043",ax=ax, flierprops = dict(marker="o",ms=5,mfc="red",mec="white", alpha  = 0.6, label = "Outliers"))
+ax.set_title("Orders Outliers", fontname = "Arial", fontsize = 17, fontweight ="bold")
+plt.show()
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 print("It's not hard, It's just new.")
