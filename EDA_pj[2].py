@@ -169,7 +169,7 @@ plt.show
 fig, ax  = plt.subplots(figsize=(8,5),constrained_layout = True)
 sns.boxplot(df["Quantity"], color = "#5AF043",ax=ax, flierprops = dict(marker="o",ms=5,mfc="red",mec="white", alpha  = 0.6, label = "Outliers"))
 ax.set_title("Orders Outliers", fontname = "Arial", fontsize = 17, fontweight ="bold")
-plt.show()
+plt.show
 
 
 
