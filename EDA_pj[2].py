@@ -112,13 +112,57 @@ plt.show
 print(df.head(10))
 
 #Top 10 best seller
-product_stats = df.groupby("Product").agg(
+product_stats1 = df.groupby("Product").agg(
     tt_pd_re = ("Revenue", "sum"),
     tt_qty = ("Quantity","count"),
     tt_ord = ("Revenue", "count")
 ).round(0).sort_values("tt_pd_re", ascending=False)
 
-print(f"\nTop 10 Products : \n{product_stats.head(10)}")
+print(f"\nTop 10 Products : \n{product_stats1.head(10)}")
+top10_re = product_stats1.head(10)
+
+product_stats2 = df.groupby("Product").agg(
+    tt_pd_re = ("Revenue", "sum"),
+    tt_qty = ("Quantity","count"),
+    tt_ord = ("Revenue", "count")
+).round(0).sort_values("tt_qty", ascending=False)
+
+print(f"\nTop 10 Best Seller : \n{product_stats2.head(10)}")
+top10_quant = product_stats2.head(10)
+
+
+#Horizontal Barchart 
+#Top 10 Revenue
+
+fig, axes = plt.subplots(1,2,figsize=(18,4),constrained_layout=True)
+
+rev_vals = top10_re["tt_pd_re"].values[::-1]
+rev_cat = top10_re.index[::-1]
+
+ax1 = axes[0]
+ax1.barh(rev_cat, rev_vals, color = "#fcdb03", edgecolor = "white", height = 0.65 )
+for bar1,val2 in zip(ax1.patches,rev_vals):
+    ax1.text(bar1.get_width() + max(rev_vals)*0.01, bar1.get_y() + bar1.get_height()/2, f"{val2:,.0f}", ha = "left", va = "center", fontname = "Arial", fontsize = 10, fontweight = "bold")
+ax1.set_title("Top 10 Revenue", fontname = "Arial", fontsize = 17, fontweight = "bold")
+ax1.set_xlabel("Revenue(VND)", fontname = "Arial", fontsize = 15, fontweight = "bold")
+ax1.set_ylabel("Category", fontname = "Arial", fontsize = 15, fontweight = "bold")
+sns.despine()
+plt.show
+
+    
+#Top 10 best seller
+top_qty = top10_quant["tt_qty"].values[::-1]
+top_qty_i = top10_quant["tt_qty"].index[::-1]
+
+ax2 = axes[1]
+ax2.barh(top_qty_i,top_qty, color = "#03dbfc", edgecolor = "white", height = 0.65)
+for bar2, val2 in zip(ax2.patches, top_qty):
+    ax2.text(bar2.get_width() + max(top_qty)*0.01, bar2.get_y() + bar2.get_height()/2, f"{val2:,.0f}", ha = "left", va= "center", fontname = "Arial", fontsize = 10, fontweight = "bold")
+ax2.set_title("Top 10 Best Sellers Products", fontname = "Arial", fontsize = 17, fontweight = "bold")
+ax2.set_xlabel("Revenue(VND)", fontname = "Arial", fontsize = 15, fontweight = "bold")
+ax2.set_ylabel("Category", fontname = "Arial",fontsize = 15, fontweight  = "bold")
+sns.despine()
+plt.show
 
 
 #Checking orders Outliers
