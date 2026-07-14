@@ -16,7 +16,7 @@ pd.options.display.float_format = '{:,.0f}'.format   #format :,0f
 print("==================GENERAL LOOK==================")
 print(f"\nSize : {e_orders_raw.shape[0]} rows {e_orders_raw.shape[1]} columns")
 print(f"\nDtypes : {e_orders_raw.dtypes}")
-print(f"\nFirst 5 rows: {e_orders_raw.head()}")
+print(f"\nFirst 5 rows: \n{e_orders_raw.head()}")
 
 #G2 DESCRIBE
 
@@ -172,16 +172,19 @@ ax.set_title("Orders Outliers", fontname = "Arial", fontsize = 17, fontweight ="
 plt.show
 
 
+#Return
+df["is_returned"] = (df["Returned"]=="Có").astype(int)
 
+rate = (df.groupby("Category").agg(
+    returned_count = ("is_returned", "sum"),
+    total_ords = ("is_returned","count"),
+    return_rate = ("is_returned","mean")
+)).sort_values("return_rate",ascending=False)
 
+rate["pct"] = (rate["return_rate"]*100).round(1)
 
-
-
-
-
-
-
-
+print(df.head(10))
+print(rate)
 
 
 
