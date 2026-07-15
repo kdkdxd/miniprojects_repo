@@ -187,26 +187,32 @@ print(rate)
 
 cat = rate.index.tolist()
 pcts = rate["pct"].values.tolist()
-total = rate["total_ords"].values.tolist()
-
 avg_rate = df["is_returned"].mean()*100
 colors_bar = ["#C62828" if p > avg_rate else "#388E3C" for p in pcts]
 
 print(f"\nAvg return rate : {avg_rate}%")   # 8% is company's avg return rate
 
-# Return Diagram
+# Return Diagram acc Category
 fig,axes = plt.subplots(1,2,figsize=(13,5),constrained_layout=True)
+
+cat = rate.index.tolist()
+pcts = rate["pct"].values.tolist()
+avg_rate = df["is_returned"].mean()*100
+colors_bar = ["#fc2323" if p > avg_rate else "#5afc3a" for p in pcts]
+
 axx1= axes[0]
 sns.barplot(x=cat,y=pcts, palette=colors_bar, ax=axx1, edgecolor = "white", width = 0.6)
 axx1.axhline(avg_rate, ls = "-", lw = 0.7, color = "black", label = f"Company's Avg Return rate ({avg_rate}%)")
 for bar, pct in zip(axx1.patches, pcts):
-    axx1.text(bar.get_x() + bar.get_width()/2, bar.get_height()+ 0.2, f"{pct}", fontname = "Arial", fontsize = 9, fontweight = "bold")
+    axx1.text(bar.get_x() + bar.get_width()/2, bar.get_height()+ 0.1, f"{pct}", fontname = "Arial", fontsize = 9, fontweight = "bold", ha = "center", va = "bottom")
 axx1.set_title("Return Rate acc Category", fontname  ="Arial", fontsize = 16, fontweight="bold")
 axx1.set_xlabel("Category", fontname = "Arial", fontsize = 13, fontweight = "bold")
 axx1.set_ylabel("Return Rate (Pct)", fontname = "Arial", fontsize = 13, fontweight = "bold")
 axx1.legend(fontsize=9, loc = "upper right")
 plt.show
 
+
+#Return Diagram acc Price
 
 df["price_tier"] = pd.cut(
     df["UnitPrice"],
@@ -216,8 +222,23 @@ df["price_tier"] = pd.cut(
 
 print(df["price_tier"])
 
-tier_rate = (df.groupby("price_tier")["is_returned"].mean().mul(100)).round(1)
+tier_rate = (df.groupby("price_tier")["is_returned"].mean().mul(100)).round(1)  #mul : *100 for all price tier
 print(f"\nTier rate Returned(pct) : \n{tier_rate}")
+
+colors_tier = ["#5afc3a", "#32ad1a", "#fc2323"]
+tier = tier_rate.index.tolist()
+tier_pcts = tier_rate.values.tolist()
+
+axx2 = axes[1]
+sns.barplot(x=tier,y=tier_pcts,palette=colors_tier, edgecolor = "white", width = 0.6, ax = axx2)
+axx2.axhline(y=avg_rate, ls = "--", lw = 0.7, label = f"Company's Avg Return rate ({avg_rate}%)" )
+for bar2, pct2 in zip(axx2.patches, tier_pcts):
+    axx2.text(bar2.get_x()+bar2.get_width()/2, bar2.get_height()+0.1, f"{pct2}", fontname = "Arial", fontsize = 9, fontweight = "bold", ha = "center", va = "bottom")
+axx2.set_title("Return Rate acc Price_Tier", fontname = "Arial", fontsize = 16, fontweight = "bold")
+axx2.set_xlabel("Price_Tier", fontname = "Arial", fontsize = 13, fontweight = "bold")
+axx2.set_ylabel("Return Rate (Pct)", fontname = "Arial", fontsize = 13, fontweight = "bold")
+axx2.legend(fontsize = 9, loc = "upper left")
+plt.show()
 
 
 
