@@ -12,7 +12,6 @@ e_orders_raw = pd.read_csv("ecommerce_orders[2].csv", parse_dates=["OrderDate"])
 pd.options.display.float_format = '{:,.0f}'.format   #format :,0f
 
 #G1 GENERAL LOOK
-
 print("==================GENERAL LOOK==================")
 print(f"\nSize : {e_orders_raw.shape[0]} rows {e_orders_raw.shape[1]} columns")
 print(f"\nDtypes : {e_orders_raw.dtypes}")
@@ -183,10 +182,42 @@ rate = (df.groupby("Category").agg(
 
 rate["pct"] = (rate["return_rate"]*100).round(1)
 
-print(df.head(10))
 print(rate)
 
 
+cat = rate.index.tolist()
+pcts = rate["pct"].values.tolist()
+total = rate["total_ords"].values.tolist()
+
+avg_rate = df["is_returned"].mean()*100
+colors_bar = ["#C62828" if p > avg_rate else "#388E3C" for p in pcts]
+
+print(f"\nAvg return rate : {avg_rate}%")   # 8% is company's avg return rate
+
+# Return Diagram
+fig,axes = plt.subplots(1,2,figsize=(13,5),constrained_layout=True)
+axx1= axes[0]
+sns.barplot(x=cat,y=pcts, palette=colors_bar, ax=axx1, edgecolor = "white", width = 0.6)
+axx1.axhline(avg_rate, ls = "-", lw = 0.7, color = "black", label = f"Company's Avg Return rate ({avg_rate}%)")
+for bar, pct in zip(axx1.patches, pcts):
+    axx1.text(bar.get_x() + bar.get_width()/2, bar.get_height()+ 0.2, f"{pct}", fontname = "Arial", fontsize = 9, fontweight = "bold")
+axx1.set_title("Return Rate acc Category", fontname  ="Arial", fontsize = 16, fontweight="bold")
+axx1.set_xlabel("Category", fontname = "Arial", fontsize = 13, fontweight = "bold")
+axx1.set_ylabel("Return Rate (Pct)", fontname = "Arial", fontsize = 13, fontweight = "bold")
+axx1.legend(fontsize=9, loc = "upper right")
+plt.show
+
+
+df["price_tier"] = pd.cut(
+    df["UnitPrice"],
+    bins = [0,200000,500000, float("inf")],
+    labels = ["Cheap<200k","Medium","Expensive>500k"]
+)
+
+print(df["price_tier"])
+
+tier_rate = (df.groupby("price_tier")["is_returned"].mean().mul(100)).round(1)
+print(f"\nTier rate Returned(pct) : \n{tier_rate}")
 
 
 
@@ -236,17 +267,7 @@ print(rate)
 
 
 
-
-
-
-
-
-
-
-
-
-
-print("It's not hard, It's just new.")
+print("\n\n\nIt's not hard, It's just new.")
 
 
 
