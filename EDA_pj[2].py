@@ -18,7 +18,6 @@ print(f"\nDtypes : {e_orders_raw.dtypes}")
 print(f"\nFirst 5 rows: \n{e_orders_raw.head()}")
 
 #G2 DESCRIBE
-
 print(f"\nDescribe: {e_orders_raw.describe().T}")
 
 #G3 MISSING VALUES
@@ -40,7 +39,6 @@ e_orders_raw["Revenue"] = e_orders_raw["Revenue"].fillna(revenue_median)
 e_orders_raw["UnitPrice"] = e_orders_raw["UnitPrice"].fillna(unit_median)
 
 df = cleaned_ds = e_orders_raw 
-print(cleaned_ds)
 
 #DATE TIME
 df["Month"] = df["OrderDate"].dt.month
