@@ -63,7 +63,7 @@ categories = cat_stats.index.tolist()
 print(cat_stats)
 
 
-
+#ANALYSICS REVENUE ACC CATEGORIES
 fig,axes = plt.subplots(1,3,figsize=(15, 5))
 
 #Total Revenue per Categories
@@ -116,16 +116,7 @@ product_stats1 = df.groupby("Product").agg(
 ).round(0).sort_values("tt_pd_re", ascending=False)
 
 print(f"\nTop 10 Products : \n{product_stats1.head(10)}")
-top10_re = product_stats1.head(10)
-
-product_stats2 = df.groupby("Product").agg(
-    tt_pd_re = ("Revenue", "sum"),
-    tt_qty = ("Quantity","count"),
-    tt_ord = ("Revenue", "count")
-).round(0).sort_values("tt_qty", ascending=False)
-
-print(f"\nTop 10 Best Seller : \n{product_stats2.head(10)}")
-top10_quant = product_stats2.head(10)
+top10_re = product_stats1.head(10)                                
 
 
 #Horizontal Barchart 
@@ -148,8 +139,8 @@ plt.show
 
     
 #Top 10 best seller
-top_qty = top10_quant["tt_qty"].values[::-1]
-top_qty_i = top10_quant["tt_qty"].index[::-1]
+top_qty = top10_re["tt_qty"].values[::-1]
+top_qty_i = top10_re["tt_qty"].index[::-1]
 
 ax2 = axes[1]
 ax2.barh(top_qty_i,top_qty, color = "#03dbfc", edgecolor = "white", height = 0.65)
@@ -211,7 +202,6 @@ plt.show
 
 
 #Return Diagram acc Price
-
 df["price_tier"] = pd.cut(
     df["UnitPrice"],
     bins = [0,200000,500000, float("inf")],
@@ -229,7 +219,7 @@ tier_pcts = tier_rate.values.tolist()
 
 axx2 = axes[1]
 sns.barplot(x=tier,y=tier_pcts,palette=colors_tier, edgecolor = "white", width = 0.6, ax = axx2)
-axx2.axhline(y=avg_rate, ls = "--", lw = 0.7, label = f"Company's Avg Return rate ({avg_rate}%)" )
+axx2.axhline(y=avg_rate, ls = "--", lw = 0.7, color = "black",label = f"Company's Avg Return rate ({avg_rate}%)" )
 for bar2, pct2 in zip(axx2.patches, tier_pcts):
     axx2.text(bar2.get_x()+bar2.get_width()/2, bar2.get_height()+0.1, f"{pct2}", fontname = "Arial", fontsize = 9, fontweight = "bold", ha = "center", va = "bottom")
 axx2.set_title("Return Rate acc Price_Tier", fontname = "Arial", fontsize = 16, fontweight = "bold")
