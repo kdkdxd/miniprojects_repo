@@ -7,10 +7,11 @@ import scipy.stats as stats
 import sys
 
 sys.stdout.reconfigure(encoding="utf-8")    
+np.random.seed(1704)
 
-np.random.seed(42)
-employees1 = pd.read_csv("employees1.csv")
-
+import os
+script_dir = os.path.dirname(os.path.abspath(__file__))
+employees1 = pd.read_csv(os.path.join(script_dir, "employees[1].csv"))
 
 #G1 GENERAL LOOK
 print("==================GENERAL LOOK==================")

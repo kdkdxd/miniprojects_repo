@@ -7,8 +7,12 @@ import sys
 
 
 sys.stdout.reconfigure(encoding="utf-8")
+np.random.seed(1704)
 
-e_orders_raw = pd.read_csv("ecommerce_orders[2].csv", parse_dates=["OrderDate"])
+import os
+script_dir = os.path.dirname(os.path.abspath(__file__))
+e_orders_raw = pd.read_csv(os.path.join(script_dir, "ecommerce_orders[2].csv"), parse_dates=["OrderDate"])
+
 pd.options.display.float_format = '{:,.0f}'.format   #format :,0f
 
 #G1 GENERAL LOOK
