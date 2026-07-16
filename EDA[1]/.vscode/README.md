@@ -125,7 +125,12 @@ Một số ngành hàng vượt tỷ lệ này đáng kể.
 
 Sản phẩm đắt tiền (trên 500.000 VND) có tỷ lệ trả hàng cao hơn rõ rệt.
 
-# Cấu trúc thư mục
+#git init
+git add .
+git commit -m "first commit"
+git branch -M main
+git remote add origin https://github.com/kdkdxd/miniprojects_repo.git
+git push -u origin main Cấu trúc thư mục
 text
 .
 ├── ecommerce_orders[2].csv   # Dữ liệu gốc

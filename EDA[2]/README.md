@@ -5,9 +5,9 @@ A data analysis project that explores an e-commerce orders dataset to uncover in
 
 ---
 
-## 📄 English
+# English
 
-### 📌 Overview
+# Overview
 This project analyzes **e-commerce transaction data** using Python (pandas, matplotlib, seaborn).  
 The goal is to answer key business questions:
 - Which product categories generate the most revenue?
@@ -15,17 +15,17 @@ The goal is to answer key business questions:
 - Which categories and price tiers have higher return rates?
 - Is there a relationship between price and returns?
 
-### 📁 Dataset
+# Dataset
 - **Source**: `ecommerce_orders[2].csv`
 - **Rows**: Order-level transactional data
 - **Key columns**: `OrderDate`, `Category`, `Product`, `Quantity`, `UnitPrice`, `Revenue`, `Returned`, `Rating`, `AgeGroup`
 
-### 🛠️ Requirements & Installation
-```bash
+# Requirements & Installation
+
 pip install numpy pandas matplotlib seaborn scipy
 Place the CSV file in the same directory as the script.
 
-🚀 Usage
+# Usage
 Run the main script:
 
 bash
@@ -46,7 +46,8 @@ Return rate by category and price tier
 
 Print summary statistics to the console
 
-📊 Key Findings
+
+# Key Findings
 Best category: The category with highest total revenue is clearly shown in bar charts.
 
 Top product: Identified along with its revenue and order count.
@@ -57,17 +58,19 @@ Some categories exceed this rate significantly.
 
 Expensive products (>500,000 VND) have notably higher return rates.
 
-📂 File Structure
+# File Structure
 text
 .
 ├── ecommerce_orders[2].csv   # Raw dataset
 ├── analysis.py               # Main analysis script
 └── README.md                 # This file
-📈 Sample Visualizations
+
+# Sample Visualizations
 (Charts are displayed when the script is run interactively)
 
-📄 Tiếng Việt
-📌 Tổng quan
+# VIETNAMESE
+
+# Tổng quan
 Dự án phân tích dữ liệu giao dịch thương mại điện tử bằng Python (pandas, matplotlib, seaborn).
 Mục tiêu trả lời các câu hỏi kinh doanh chính:
 
@@ -79,19 +82,19 @@ Ngành hàng nào, phân khúc giá nào có tỷ lệ trả hàng cao?
 
 Có mối liên hệ nào giữa giá sản phẩm và tỷ lệ hoàn trả không?
 
-📁 Dữ liệu
+# Dữ liệu
 Nguồn: ecommerce_orders[2].csv
 
 Số dòng: Dữ liệu cấp đơn hàng
 
 Cột chính: OrderDate, Category, Product, Quantity, UnitPrice, Revenue, Returned, Rating, AgeGroup
 
-🛠️ Yêu cầu & Cài đặt
+# Yêu cầu & Cài đặt
 bash
 pip install numpy pandas matplotlib seaborn scipy
 Đặt file CSV cùng thư mục với script.
 
-🚀 Cách chạy
+# Cách chạy
 Chạy script chính:
 
 bash
@@ -112,7 +115,7 @@ Tỷ lệ trả hàng theo ngành hàng và phân khúc giá
 
 In số liệu thống kê tổng hợp ra console
 
-📊 Phát hiện chính
+# Phát hiện chính
 Ngành hàng tốt nhất: Ngành có tổng doanh thu cao nhất được làm nổi bật trên biểu đồ.
 
 Sản phẩm đứng đầu: Được xác định kèm doanh thu và số đơn.
@@ -123,11 +126,12 @@ Một số ngành hàng vượt tỷ lệ này đáng kể.
 
 Sản phẩm đắt tiền (trên 500.000 VND) có tỷ lệ trả hàng cao hơn rõ rệt.
 
-📂 Cấu trúc thư mục
+# Cấu trúc thư mục
 text
 .
 ├── ecommerce_orders[2].csv   # Dữ liệu gốc
 ├── analysis.py               # Script phân tích chính
 └── README.md                 # File này
-📈 Biểu đồ mẫu
+
+# Biểu đồ mẫu
 (Các biểu đồ sẽ hiển thị khi chạy script trong môi trường hỗ trợ giao diện đồ họa)
