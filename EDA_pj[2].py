@@ -22,7 +22,7 @@ print(f"\nDtypes : {e_orders_raw.dtypes}")
 print(f"\nFirst 5 rows: \n{e_orders_raw.head()}")
 
 #G2 DESCRIBE & INFO
-print(f"\nInfo: {e_orders_raw.info()}")
+print(f"\nInfo: {e_orders_raw}")
 print(f"\nDescribe: {e_orders_raw.describe().T}")
 
 #G3 MISSING VALUES
