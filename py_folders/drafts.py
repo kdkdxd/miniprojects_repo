@@ -27,8 +27,10 @@ employees = {
 
 print(employees["E001"]["name"])
 
-
-
+for info in employees.values():
+    if info["dept"]=="Data":
+        info["Salary"] = info["Salary"]*1.1
+print(employees)
 
 
 
