@@ -17,9 +17,15 @@ score.sort(reverse=True)
 
 
 
+employees = {
+    "E001": {"name": "Nguyen Van A", "dept": "Data", "salary": 15000000},
+    "E002": {"name": "Tran Thi B",  "dept": "AI",   "salary": 18000000},
+    "E003": {"name": "Le Van C",    "dept": "Data", "salary": 12000000},
+    "E004": {"name": "Pham Thi D",  "dept": "AI",   "salary": 20000000},
+}
 
 
-
+print(employees["E001"]["name"])
 
 
 

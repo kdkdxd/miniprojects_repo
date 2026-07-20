@@ -1,7 +1,8 @@
 
 #__________________________________________________________________________________________________________________________________
 # : List
-score = [ 90, 80, 70 , 65, 48, 400, 600 ] #  
+score = [ 90, 80, 70 , 65, 48, 400, 600 ] #  Remove-Item -Recurse -Force py_projects\eda_projects\eda_2\.git
+
 
 #Usually used to store a collection of data, such as a list of scores, names, or any other type of data.
 score.append(67)            # them 1 phan tu vao cuoi list
