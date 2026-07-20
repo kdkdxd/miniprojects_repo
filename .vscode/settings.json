@@ -1,6 +1,9 @@
 {
+<<<<<<< HEAD
     "python-envs.defaultEnvManager": "ms-python.python:conda",
     "python-envs.defaultPackageManager": "ms-python.python:conda",
+=======
+>>>>>>> 422bd796756ec674a2886b61386783b9edf53d70
     "python-envs.pythonProjects": [
         {
             "path": ".",
