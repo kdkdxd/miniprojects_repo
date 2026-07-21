@@ -6,27 +6,21 @@ import seaborn as sns
 import scipy.stats as stats
 import sys
 
-chi_tieu = pd.Series({
-    "Food":      2500000,
-    "Rent":      3000000,
-    "Transport": 500000,
-    "Entertain": 800000
+pd.options.display.float_format = '{:,.0f}'.format   #format :,0f
+
+
+nhan_vien = pd.DataFrame({
+    "Ten":       ["An",    "Bình",  "Chi",   "Duy",   "Em"],
+    "Phong":     ["IT",    "Kinh doanh", "IT", "HR", "Kinh doanh"],
+    "Luong":     [15000000, 20000000, 18000000, 12000000, 22000000],
+    "KinhNghiem": [3,       5,        4,        2,        6]
 })
+print(nhan_vien)
 
-print(chi_tieu)
-
-
-print(chi_tieu.argmax())
-print(chi_tieu.argmin())
-
-print(f"\n{chi_tieu.idxmax()}")
-print(f"\n{chi_tieu.idxmin()}")
-
-
-
-
-
-
+print(f"\nShape: {nhan_vien.shape[0]} rows {nhan_vien.shape[1]} columns")
+print(f"\nDtype: {nhan_vien.dtypes}")
+print(f"\nInfo: {nhan_vien.info()}")
+print(f"\nDescribe: \n{nhan_vien.describe()}")
 
 
 
