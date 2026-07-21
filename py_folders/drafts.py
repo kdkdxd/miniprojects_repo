@@ -30,7 +30,8 @@ print(np.mean(doanh_thu, axis=1))
 #  total revenue each workers have made
 print(np.sum(doanh_thu,axis=0))
 
-#
+# trung binh doanh thu 3 nguoi lam dc trong moi thang
+print(np.mean(doanh_thu,axis=1))
 
 
 
