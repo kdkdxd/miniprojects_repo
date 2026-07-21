@@ -14,13 +14,13 @@ chi_tieu = pd.Series({
 })
 
 print(chi_tieu)
-print(f"Money spent on Food : {chi_tieu["Food"]}")
-print(chi_tieu.iloc[3])
-print(chi_tieu.iloc[1])
 
-chi_tieu["Expense"] = chi_tieu[chi_tieu>1000000]
-print(chi_tieu)
 
+print(chi_tieu.argmax())
+print(chi_tieu.argmin())
+
+print(f"\n{chi_tieu.idxmax()}")
+print(f"\n{chi_tieu.idxmin()}")
 
 
 
