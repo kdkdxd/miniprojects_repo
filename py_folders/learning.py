@@ -642,7 +642,7 @@ print(tong_tien)  # [1510000 2010000 1265000 1810000]
 
 # --- Các hàm thống kê quan trọng ---
 
-diem = np.array([7.5, 8.0, 6.5, 9.0, 7.0, 8.5, 5.5, 9.5])
+diem = np.array([7.5, 8.0, 6.5, 9.0, 7.0, 8.5, 5.5, 9.5]) 
 
 print(np.sum(diem))     # 61.5   → tổng
 print(np.mean(diem))    # 7.6875 → trung bình
