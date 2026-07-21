@@ -23,11 +23,18 @@ print(f"\nInfo: {nhan_vien.info()}")
 print(f"\nDescribe: \n{nhan_vien.describe()}")
 
 
+np.random.seed(42)
+df = pd.DataFrame({
+    "OrderCode": range(1001),
+    "Price": np.random.exponential(500000, 1001).round(),
+    "Area":np.random.choice(["HCM", "HN", "DN", "CT"], 1001, p=[0.4, 0.35, 0.15, 0.1])
+})
 
 
-
-
-
+ex_stratified = df.groupby("Area",group_keys=False).sample(
+    frac=0.25, random_state= 42
+)
+print(ex_stratified)
 
 
 
