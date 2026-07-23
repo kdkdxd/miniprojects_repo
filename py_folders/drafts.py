@@ -22,7 +22,16 @@ else:
     print("Doesn't have enough Evidence")
 
 
+# paired-test
 
+doanh_so_truoc = np.array([15, 18, 12, 20, 16, 14, 22, 19])
+doanh_so_sau   = np.array([18, 20, 15, 22, 18, 17, 24, 21])
+
+t2,pvalue2 = stats.ttest_rel(doanh_so_truoc,doanh_so_sau)
+if pvalue2 < 0.05:
+    print("Training is Efficient")
+else:
+    print("Training is Inefficient")
 
 
 
