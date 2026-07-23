@@ -992,7 +992,7 @@ ex25pct = df.sample(frac=0.25, random_state=42) #lấy 25% random_state = random
 ex_stratified = df.groupby("Area", group_keys=False).sample(
     frac=0.25,
     random_state=42
-)
+)   
 print(ex_stratified)
 print(ex_stratified["Area"].value_counts(normalize=True)*100)
 
@@ -1254,7 +1254,7 @@ dfapl["Cap"] = dfapl["Luong"].apply(xep_cap)
 print(dfapl)
 
 
-# apply trên nhiều cột (axis=1: đọc từng hàng)
+# apply trên nhiều cột (axis=1: dọc từng hàng)
 def luong_thuc_nhan(hang):
     if hang["Nam"] >= 5:
         bonus = hang["Luong"] * 0.15   # bonus 15%

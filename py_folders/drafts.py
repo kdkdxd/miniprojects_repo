@@ -9,32 +9,81 @@ import sys
 pd.options.display.float_format = '{:,.0f}'.format   #format :,0f
 
 
-nhan_vien = pd.DataFrame({
-    "Ten":       ["An",    "Bình",  "Chi",   "Duy",   "Em"],
-    "Phong":     ["IT",    "Kinh doanh", "IT", "HR", "Kinh doanh"],
-    "Luong":     [15000000, 20000000, 18000000, 12000000, 22000000],
-    "KinhNghiem": [3,       5,        4,        2,        6]
-})
-print(nhan_vien)
-
-print(f"\nShape: {nhan_vien.shape[0]} rows {nhan_vien.shape[1]} columns")
-print(f"\nDtype: {nhan_vien.dtypes}")
-print(f"\nInfo: {nhan_vien.info()}")
-print(f"\nDescribe: \n{nhan_vien.describe()}")
-
-
-np.random.seed(42)
-df = pd.DataFrame({
-    "OrderCode": range(1001),
-    "Price": np.random.exponential(500000, 1001).round(),
-    "Area":np.random.choice(["HCM", "HN", "DN", "CT"], 1001, p=[0.4, 0.35, 0.15, 0.1])
+nv = pd.DataFrame({
+    "Ten":    ["An", "Bình", "Chi", "Duy", "Em", "Phúc"],
+    "Phong":  ["IT", "KD",   "IT",  "HR",  "KD", "IT"],
+    "Luong":  [15, 20, 18, 12, 22, 16],   # triệu
+    "Nam":    [3,  5,  4,  2,  6,  1]     # năm kinh nghiệm
 })
 
+it = nv[nv["Phong"]=="IT"]
+it_high_sa = nv[(nv["Phong"]=="IT")&(nv["Luong"]>15)]
 
-ex_stratified = df.groupby("Area",group_keys=False).sample(
-    frac=0.25, random_state= 42
-)
-print(ex_stratified)
+print(f"\nNhan vien IT : \n{it}")
+print(f"\nNhan vien IT luong cao : \n{it_high_sa}")
+
+kd_hr = nv[nv["Phong"].isin(["KD","HR"])]
+
+wk = pd.DataFrame({
+    "Ten":   ["An", "Bình", "Chi", "Duy", "Em", "Phúc", "Giang"],
+    "Phong": ["IT", "KD",   "IT",  "HR",  "KD", "IT",   "HR"],
+    "Luong": [15,   20,     18,    12,    22,   16,     14],
+    "Nam":   [3,    5,      4,     2,     6,    1,      3]
+}).reset_index()
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
