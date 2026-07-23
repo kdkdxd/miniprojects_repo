@@ -9,25 +9,28 @@ import sys
 pd.options.display.float_format = '{:,.0f}'.format   #format :,0f
 np.random.seed(1704)
 
-dfapl = pd.DataFrame({
-    "Ten":   ["An", "Bình", "Chi", "Duy"],
-    "Luong": [15,   20,     18,    12],   # triệu
-    "Nam":   [3,    5,      4,     2]
+don_hang = pd.DataFrame({
+    "MaDH":     [1,      2,      3,      4],
+    "MaKH":     ["KH01", "KH02", "KH01", "KH03"],
+    "SanPham":  ["Áo",   "Quần", "Giày", "Mũ"],
+    "GiaTri":   [200000, 350000, 500000, 120000]
 })
 
+khach_hang = pd.DataFrame({
+    "MaKH":    ["KH01", "KH02", "KH03", "KH04"],
+    "TenKH":   ["An",   "Bình", "Chi",  "Duy"],
+    "ThanhPho":["HCM",  "HN",   "DN",   "HCM"]
+})
 
-def luong_thuc_nhan(rank):
-    if rank["Nam"] >=5:
-        bonus = rank["Luong"]*1.15
-    else :
-        bonus = rank["Luong"]*1.05
-    return bonus + rank["Luong"]
+result_both = pd.merge(don_hang,khach_hang,on="MaKH",how="outer")
+result_inner = pd.merge(don_hang,khach_hang,on="MaKH",how="inner")
+result_left = pd.merge(don_hang,khach_hang,on="MaKH",how="left")
+result_right = pd.merge(don_hang,khach_hang,on="MaKH",how="right")
 
-dfapl["Luong_thuc_nhan"] = dfapl.apply(luong_thuc_nhan, axis = 1)
-print(dfapl)
-
-
-# bro they'll earn a lot of money 
+print(f"\nResult_both: \n{result_both}")
+print(f"\nResult_inner: \n{result_inner}")
+print(f"\nResult_left: \n{result_left}")
+print(f"\nResult_right: \n{result_right}")
 
 
 
