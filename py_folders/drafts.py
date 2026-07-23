@@ -7,37 +7,27 @@ import scipy.stats as stats
 import sys
 
 pd.options.display.float_format = '{:,.0f}'.format   #format :,0f
+np.random.seed(1704)
 
-
-nv = pd.DataFrame({
-    "Ten":    ["An", "Bình", "Chi", "Duy", "Em", "Phúc"],
-    "Phong":  ["IT", "KD",   "IT",  "HR",  "KD", "IT"],
-    "Luong":  [15, 20, 18, 12, 22, 16],   # triệu
-    "Nam":    [3,  5,  4,  2,  6,  1]     # năm kinh nghiệm
+dfapl = pd.DataFrame({
+    "Ten":   ["An", "Bình", "Chi", "Duy"],
+    "Luong": [15,   20,     18,    12],   # triệu
+    "Nam":   [3,    5,      4,     2]
 })
 
-it = nv[nv["Phong"]=="IT"]
-it_high_sa = nv[(nv["Phong"]=="IT")&(nv["Luong"]>15)]
 
-print(f"\nNhan vien IT : \n{it}")
-print(f"\nNhan vien IT luong cao : \n{it_high_sa}")
+def luong_thuc_nhan(rank):
+    if rank["Nam"] >=5:
+        bonus = rank["Luong"]*1.15
+    else :
+        bonus = rank["Luong"]*1.05
+    return bonus + rank["Luong"]
 
-kd_hr = nv[nv["Phong"].isin(["KD","HR"])]
-
-wk = pd.DataFrame({
-    "Ten":   ["An", "Bình", "Chi", "Duy", "Em", "Phúc", "Giang"],
-    "Phong": ["IT", "KD",   "IT",  "HR",  "KD", "IT",   "HR"],
-    "Luong": [15,   20,     18,    12,    22,   16,     14],
-    "Nam":   [3,    5,      4,     2,     6,    1,      3]
-}).reset_index()
+dfapl["Luong_thuc_nhan"] = dfapl.apply(luong_thuc_nhan, axis = 1)
+print(dfapl)
 
 
-
-
-
-
-
-
+# bro they'll earn a lot of money 
 
 
 
