@@ -21,11 +21,10 @@ ax.set_title("Doanh thu theo Tháng", fontname = "Arial", fontsize = 15, fontwei
 ax.set_xlabel("Tháng", fontname = "Arial", fontsize = 10, fontweight="bold")
 ax.set_ylabel("Doanh thu (VND)", fontname = "Arial", fontsize = 10, fontweight="bold")
 plt.tight_layout()
-plt.show()
+plt.show
 
 
-
-
+print("This is a Seaborn Chart")
 
 
 
