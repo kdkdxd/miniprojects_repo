@@ -33,8 +33,22 @@ if pvalue2 < 0.05:
 else:
     print("Training is Inefficient")
 
+# pearsonr (tương quan)
+ex_pear = np.random.randint(1,15,50)
+salary_pear = ex_pear*1.5 + np.random.randn(50)*2 + 10
 
-
+r,pval_pear = stats.pearsonr(ex_pear,salary_pear)
+print(f"\nr: {r}")
+print(f"\nPearsonr p-value {pval_pear:.4f}")
+if pval_pear < 0.05:
+    if r >= 0.07:
+        print("Tương quan mạnh")
+    elif r >= 0.03:
+        print("Tương quan vừa")
+    else:
+        print("Tương quan yếu")
+else:
+    print("Chưa đủ bằng chứng thống kê")
 
 
 
