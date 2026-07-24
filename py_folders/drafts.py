@@ -68,7 +68,7 @@ print(f"Data lệch   → p={p2:.4f}", "✅ Chuẩn" if p2 > 0.05 else "❌ Khô
 
 list = [1,2,3,4,5,6,7,8,9,10]
 print(list[1])
-
+list = list.append([19,63,84,97])
 print("I'm smart.")
 
 
