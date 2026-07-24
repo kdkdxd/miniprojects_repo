@@ -51,7 +51,18 @@ else:
     print("Chưa đủ bằng chứng thống kê")
 
 
+# Shapiro-Wilk test (tốt cho n < 2000)
+# H₀: dữ liệu có phân phối chuẩn
 
+
+data_chuan = np.random.normal(0,1,100)
+data_lech = np.random.exponential(1,100)
+
+stat1, p1 = stats.shapiro(data_chuan)
+stat2, p2 = stats.shapiro(data_lech)
+
+print(f"Data chuẩn  → p={p1:.4f}", "✅ Chuẩn" if p1 > 0.05 else "❌ Không chuẩn")
+print(f"Data lệch   → p={p2:.4f}", "✅ Chuẩn" if p2 > 0.05 else "❌ Không chuẩn")
 
 
 
