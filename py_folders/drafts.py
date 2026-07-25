@@ -26,12 +26,15 @@ plt.show
 
 print("This is a Seaborn Chart")
 
+#draw trend line
+thang_x = [1,2,3,4,5,6]
+doanhthu_y = [150,200,180,250,300,280]
+x_line = np.linspace(1,35,350)
+z = np.polyfit(thang_x,doanhthu_y,1)
+p = np.poly1d(z)
+ax.plot(x_line, p(x_line), color = "steelblue", label = "Trend line")
 
-
-
-
-
-
+plt.show()
 
 
 
