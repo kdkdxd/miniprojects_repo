@@ -21,11 +21,81 @@ t1,v1 = stats.shapiro(thang_x)
 t2,v2 = stats.shapiro(doanhthu_y)
 if v1 > 0.05:
     print("Normal")
+    if v2 > 0.05:
+        print("Normal")
+        from statsmodels.stats.multicomp import pairwise_tukeyhsd
+        tukey = pairwise_tukeyhsd(endog=doanhthu_y, groups=thang_x, alpha= 0.05)
 else:
     print("Not Normal")
+print(tukey)
 
-if v2 > 0.05:
-    print("Normal")
-else:
-    print("Not Normal")
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
