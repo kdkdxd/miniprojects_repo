@@ -17,15 +17,15 @@ np.random.seed(1704)
 thang_x = [1,2,3,4,5,6]
 doanhthu_y = [150,200,180,250,300,280]
 
-print("i dont know what to do now :/")
-result = anderson(doanhthu_y)
-print(f"Anderson-Darling: stat={result.statistic:.4f}")
-print(f"Critical values: {result.critical_values}")          # if Anderson-Darling < Critical values < 0.05 => Normal Distribution
-print(f"Significance levels: {result.significance_level}")   
+t1,v1 = stats.shapiro(thang_x)
+t2,v2 = stats.shapiro(doanhthu_y)
+if v1 > 0.05:
+    print("Normal")
+else:
+    print("Not Normal")
 
+if v2 > 0.05:
+    print("Normal")
+else:
+    print("Not Normal")
 
-
-
-
-
-print("\n\n\nIt's not hard, It's just new.")
