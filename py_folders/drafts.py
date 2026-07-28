@@ -38,7 +38,7 @@ def tier_rate(score):
         print("Low")
 
 
-
+print("Im goona make it baby")
 
 
 
