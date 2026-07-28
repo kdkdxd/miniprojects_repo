@@ -29,6 +29,13 @@ else:
     print("Not Normal")
 print(tukey)
 
+def tier_rate(score):
+    if score >=8:
+        return "Good"
+    elif score >=6:
+        return "Medium"
+    else:
+        print("Low")
 
 
 
