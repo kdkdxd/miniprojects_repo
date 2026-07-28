@@ -40,7 +40,7 @@ def tier_rate(score):
 
 print("Im gonna make it baby")
 
-
+print("Im me, Im not God's favorite.")
 
 
 
