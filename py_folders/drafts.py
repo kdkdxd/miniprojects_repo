@@ -11,45 +11,30 @@ import sys
 pd.options.display.float_format = '{:,.0f}'.format   #format :,0f
 np.random.seed(1704)
 
+# PANDAS REVISION
 
-#seaborn revision
+don_hang = pd.DataFrame({
+    "MaDH":     [1,      2,      3,      4],
+    "MaKH":     ["KH01", "KH02", "KH01", "KH03"],
+    "SanPham":  ["Áo",   "Quần", "Giày", "Mũ"],
+    "GiaTri":   [200000, 350000, 500000, 120000]
+})
 
-thang_x = [1,2,3,4,5,6]
-doanhthu_y = [150,200,180,250,300,280]
+khach_hang = pd.DataFrame({
+    "MaKH":    ["KH01", "KH02", "KH03", "KH04"],
+    "TenKH":   ["An",   "Bình", "Chi",  "Duy"],
+    "ThanhPho":["HCM",  "HN",   "DN",   "HCM"]
+})
 
-t1,v1 = stats.shapiro(thang_x)
-t2,v2 = stats.shapiro(doanhthu_y)
-if v1 > 0.05:
-    print("Normal")
-    if v2 > 0.05:
-        print("Normal")
-        from statsmodels.stats.multicomp import pairwise_tukeyhsd
-        tukey = pairwise_tukeyhsd(endog=doanhthu_y, groups=thang_x, alpha= 0.05)
-else:
-    print("Not Normal")
-print(tukey)
+#CONCAT()
+thang1 = pd.DataFrame({"SP": ["A","B"], "Doanh": [100, 200]})
+thang2 = pd.DataFrame({"SP": ["A","C"], "Doanh": [150, 180]})
+both1and2 = pd.concat([thang1,thang2],ignore_index=True)
 
-def tier_rate(score):
-    if score >=8:
-        return "Good"
-    elif score >=6:
-        return "Medium"
-    else:
-        print("Low")
+print(both1and2)
 
-
-print("Im gonna make it baby")
-
-print("Im me, Im not God's favorite.")
-print("IDGAF, JUST WORKING ON MY BUSSINESS.")
-
-
-
-
-
-
-
-
+group_A = both1and2.groupby("A")["Doanh"].mean()
+print(group_A)
 
 
 

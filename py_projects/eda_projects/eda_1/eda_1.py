@@ -104,7 +104,7 @@ plt.tight_layout()
 plt.show
 
 
-# Salary According to Department
+#  Mean Salary According to Department
 
 desa_stat = (cleaned_em.groupby("Department")["Salary"]
              .agg(["mean", "median", "std", "count"])
@@ -138,6 +138,7 @@ ax.set_title("Difference between Male and Female Salary", fontsize = 16, fontnam
 ax.set_xlabel("Gender",fontname ="Arial", fontsize = 11, fontweight = "bold")
 ax.set_ylabel("Salary (Million VND)",fontname ="Arial", fontsize = 11, fontweight = "bold")
 plt.show
+
 #Difference between different Education
 
 edusa = (cleaned_em.groupby("Education")["Salary"]
