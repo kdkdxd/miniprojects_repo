@@ -32,19 +32,24 @@ thang2 = pd.DataFrame({"SP": ["A","C"], "Doanh": [150, 180]})
 both1and2 = pd.concat([thang1,thang2],ignore_index=True)
 
 print(both1and2)
-
-group_A = both1and2.groupby("A")["Doanh"].mean()
-print(group_A)
+group_A = both1and2[both1and2["SP"]=="A"]
 
 
 
+df14 = pd.DataFrame({
+    "SP":     ["Áo", "Quần", "Áo", "Giày", "Quần", "Áo"],
+    "Doanh":  [200, 350, 220, 500, 400, 180],
+    "Phong":  ["HCM","HN","HCM","DN","HN","HCM"]
+})
 
+pivot_table14 = df14.pivot_table(                    # Giống df14.groupby(["Phong", "SP"])["Doanh"].sum()
+                                 values = "Doanh",   # Lấy cột "Doanh" để tính toán
+                                 index = "Phong",    # Lấy "Phong" làm hàng
+                                 columns = "SP",     # Lấy "SP" làm cột
+                                 aggfunc = "sum",    # Cách gộp nếu bị trùng
+                                 fill_value = 0)     # Nếu ko có data thì thay = 0
 
-
-
-
-
-
+print(pivot_table14)
 
 
 
