@@ -1,92 +1,77 @@
+# VIETNAMESE
 
- <<<<<<< HEAD
-
-# EDA[2]
-# E-commerce Orders Analysis
 =======
-EDA Project [2]
-# E-commerce Orders Analysis
 
+# VIETNAMESE VER
 >>>>>>> ee29a20329a847b4941221402d1100f15a71c60d
-A data analysis project that explores an e-commerce orders dataset to uncover insights about revenue, best-selling products, return rates, and customer behavior.
+# Tổng quan
+Dự án phân tích dữ liệu giao dịch thương mại điện tử bằng Python (pandas, matplotlib, seaborn).
+Mục tiêu trả lời các câu hỏi kinh doanh chính:
 
----
+Ngành hàng nào mang lại doanh thu cao nhất?
 
-# ENGLISH VER
+Top 10 sản phẩm bán chạy nhất là gì?
 
-# Overview
-This project analyzes **e-commerce transaction data** using Python (pandas, matplotlib, seaborn).  
-The goal is to answer key business questions:
-- Which product categories generate the most revenue?
-- What are the top 10 best-selling products?
-- Which categories and price tiers have higher return rates?
-- Is there a relationship between price and returns?
+Ngành hàng nào, phân khúc giá nào có tỷ lệ trả hàng cao?
 
-# Dataset
-- **Source**: `ecommerce_orders[2].csv`
-- **Rows**: Order-level transactional data
-- **Key columns**: `OrderDate`, `Category`, `Product`, `Quantity`, `UnitPrice`, `Revenue`, `Returned`, `Rating`, `AgeGroup`
+Có mối liên hệ nào giữa giá sản phẩm và tỷ lệ hoàn trả không?
 
-# Requirements & Installation
-<<<<<<< HEAD
+# Dữ liệu
+Nguồn: ecommerce_orders[2].csv
 
-pip install numpy pandas matplotlib seaborn scipy
-=======
+Số dòng: Dữ liệu cấp đơn hàng
+
+Cột chính: OrderDate, Category, Product, Quantity, UnitPrice, Revenue, Returned, Rating, AgeGroup
+
+# Yêu cầu & Cài đặt
 bash
 pip install numpy pandas matplotlib seaborn scipy
+Đặt file CSV cùng thư mục với script.
 
->>>>>>> ee29a20329a847b4941221402d1100f15a71c60d
-Place the CSV file in the same directory as the script.
-
-# Usage
-Run the main script:
+# Cách chạy
+Chạy script chính:
 
 bash
 python analysis.py
-It will:
+Script sẽ:
 
-Display general data info and missing values
+Hiển thị thông tin chung và dữ liệu thiếu
 
-Impute missing values
+Điền giá trị thiếu
 
-Produce visualizations:
+Tạo biểu đồ:
 
-Revenue & orders by category
+Doanh thu và số đơn theo ngành hàng
 
-Top 10 products by revenue & quantity
+Top 10 sản phẩm theo doanh thu và số lượng bán
 
-Return rate by category and price tier
+Tỷ lệ trả hàng theo ngành hàng và phân khúc giá
 
-Print summary statistics to the console
+In số liệu thống kê tổng hợp ra console
 
-<<<<<<< HEAD
+# Phát hiện chính
+Ngành hàng tốt nhất: Ngành có tổng doanh thu cao nhất được làm nổi bật trên biểu đồ.
 
-# Key Findings
-=======
-# Key Findings :
->>>>>>> ee29a20329a847b4941221402d1100f15a71c60d
-Best category: The category with highest total revenue is clearly shown in bar charts.
+Sản phẩm đứng đầu: Được xác định kèm doanh thu và số đơn.
 
-Top product: Identified along with its revenue and order count.
+Tỷ lệ trả hàng: Trung bình toàn công ty ~8%.
 
-Return rate: Average return rate is ~8%.
+Một số ngành hàng vượt tỷ lệ này đáng kể.
 
-Some categories exceed this rate significantly.
+Sản phẩm đắt tiền (trên 500.000 VND) có tỷ lệ trả hàng cao hơn rõ rệt.
 
-Expensive products (>500,000 VND) have notably higher return rates.
-
-# File Structure
+# Cấu trúc thư mục
 text
 .
-├── ecommerce_orders[2].csv   # Raw dataset
-├── analysis.py               # Main analysis script
+├── ecommerce_orders[2].csv   # Dữ liệu gốc
+├── analysis.py               # Script phân tích chính
+└── README.md                 # File này
+
+# Biểu đồ mẫu
 <<<<<<< HEAD
-└── README.md                 # This file
+(Các biểu đồ sẽ hiển thị khi chạy script trong môi trường hỗ trợ giao diện đồ họa)
 =======
-└── README.md                 # This file Sample Visualizations
->>>>>>> ee29a20329a847b4941221402d1100f15a71c60d
+(Các biểu đồ sẽ hiển thị khi chạy script trong môi trường hỗ trợ giao diện đồ họa)
 
-# Sample Visualizations
-(Charts are displayed when the script is run interactively)
-
-<<<<<<< HEAD
+Bạn chỉ cần copy toàn bộ nội dung trên vào file `README.md` trong repo.  
+Nếu muốn tối giản hơn, có thể để một ngôn ngữ làm chính và thêm đường dẫn nhảy đến phần còn lại (ví dụ `[Tiếng Việt](#-tiếng-việt)`). Cách làm này đảm bảo **chuyên nghiệp và tiện lợi** cho mọi đối tượng người dùng.# EDA2 - E-commerce Orders Analysis
