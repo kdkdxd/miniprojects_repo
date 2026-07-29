@@ -1,77 +1,84 @@
 
-# VIETNAMESE
+# EDA[1]
+# Employees Data Analysis
+A data analysis project that explores an employee dataset to uncover insights about salary distributions, correlations, and group differences.
 
-# Tổng quan
-Dự án này phân tích hồ sơ nhân viên để trả lời các câu hỏi:
-- Lương thay đổi như thế nào theo phòng ban, giới tính và trình độ học vấn?
-- Có mối tương quan giữa tuổi và kinh nghiệm không?
-- Tỷ lệ thưởng có phụ thuộc vào hiệu suất làm việc không?
-- Sự khác biệt lương giữa các nhóm có ý nghĩa thống kê không?
+---
 
-# Dữ liệu
-- Nguồn: `employees1.csv`
-- Dòng: dữ liệu cấp nhân viên
-- Cột chính: `Age`, `Experience`, `Salary`, `Performance`, `Bonus_pct`, `Department`, `Gender`, `Education`
+# English
 
-# Yêu cầu và cài đặt
+# Overview
+This project analyzes employee data using Python (pandas, matplotlib, seaborn, scipy). The goal is to answer key business questions:
+- What is the salary distribution across departments, genders, and education levels?
+- Is there a correlation between age and experience?
+- Does bonus percentage depend on performance?
+- Are salary differences between groups statistically significant?
+
+# Dataset
+- Source: `employees1.csv`
+- Rows: Employee-level data
+- Key columns: `Age`, `Experience`, `Salary`, `Performance`, `Bonus_pct`, `Department`, `Gender`, `Education`
+
+# Requirements & Installation
 
 pip install numpy pandas matplotlib seaborn scipy statsmodels
-Đặt file employees1.csv cùng thư mục với script.
+Place employees1.csv in the same directory as the script.
 
-# Cách chạy
-Chạy script chính:
+# Usage
+Run the main script:
 
 bash
-python employees_analysis.py
-Script sẽ:
+python analysis.py
+It will:
 
-Hiển thị thông tin chung và giá trị thiếu
+Display general information and missing values
 
-Điền giá trị thiếu bằng trung vị
+Impute missing values with medians
 
-Tạo các biểu đồ:
+Produce visualizations:
 
-Phân phối của các biến số
+Distributions of numerical variables
 
-Hộp (boxplot) phát hiện ngoại lệ tiền lương
+Boxplot for salary outliers
 
-Heatmap tương quan giữa Tuổi và Kinh nghiệm
+Heatmap of correlation between Age and Experience
 
-Biểu đồ tán xạ Lương theo Kinh nghiệm kèm đường xu hướng
+Scatter plot of Salary vs Experience with trend line
 
-Biểu đồ cột lương trung bình theo Phòng ban, Giới tính, Học vấn
+Bar charts of mean salary by Department, Gender, and Education
 
-Heatmap lương trung bình theo Phòng ban và Học vấn
+Pivot table heatmap of mean salary by Department and Education
 
-Biểu đồ tán xạ Tỷ lệ thưởng theo Hiệu suất
+Scatter plot of Bonus percentage vs Performance
 
-Thực hiện kiểm định thống kê:
+Perform statistical tests:
 
-Kiểm định Shapiro-Wilk để kiểm tra phân phối chuẩn của Lương
+Shapiro-Wilk test for normality of Salary
 
-Kiểm định Mann-Whitney U so sánh lương nam và nữ
+Mann-Whitney U test comparing male and female salaries
 
-Kiểm định Kruskal-Wallis so sánh lương giữa các phòng ban, sau đó dùng Tukey HSD nếu có ý nghĩa
+Kruskal-Wallis test comparing salaries across departments, followed by Tukey HSD post-hoc if significant
 
-In kết quả ra màn hình console
+Print summary statistics and test results to the console
 
-# Phát hiện chính
-Phân phối lương lệch phải và có ngoại lệ.
+# Key Findings
+Salary distribution is right-skewed with outliers.
 
-Tuổi và kinh nghiệm có tương quan dương mạnh.
+Age and Experience have a strong positive correlation.
 
-Có sự khác biệt lương có ý nghĩa thống kê giữa các phòng ban.
+Departments show clear differences in average salary; statistical tests confirm significant differences among at least some departments.
 
-Chênh lệch lương theo giới tính đã được kiểm định; kết quả cho biết sự khác biệt có ý nghĩa hay không.
+Gender salary difference: test results indicate whether a statistically significant gap exists.
 
-Trình độ học vấn cao hơn gắn với mức lương trung bình cao hơn.
+Education level correlates with higher average salary.
 
-Tỷ lệ thưởng không thể hiện mối quan hệ tuyến tính rõ ràng với điểm hiệu suất.
+Bonus percentage does not show a clear linear relationship with performance score.
 
-# Cấu trúc thư mục
+# File Structure
 text
-employees_analysis/
-├── employees1.csv
-├── employees_analysis.py
-└── README.md
+.
+├── employees1.csv          # Raw dataset
+├── analysis.py             # Main analysis script
+└── README.md               # This file
+
 
