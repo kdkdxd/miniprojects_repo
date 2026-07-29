@@ -167,4 +167,3 @@ text
 Bạn chỉ cần copy toàn bộ nội dung trên vào file `README.md` trong repo.  
 Nếu muốn tối giản hơn, có thể để một ngôn ngữ làm chính và thêm đường dẫn nhảy đến phần còn lại (ví dụ `[Tiếng Việt](#-tiếng-việt)`). Cách làm này đảm bảo **chuyên nghiệp và tiện lợi** cho mọi đối tượng người dùng.
 
->>>>>>> ee29a20329a847b4941221402d1100f15a71c60d
