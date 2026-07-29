@@ -11,11 +11,7 @@ A data analysis project that explores an e-commerce orders dataset to uncover in
 
 ---
 
-<<<<<<< HEAD
-# English
-=======
 # ENGLISH VER
->>>>>>> ee29a20329a847b4941221402d1100f15a71c60d
 
 # Overview
 This project analyzes **e-commerce transaction data** using Python (pandas, matplotlib, seaborn).  
