@@ -1,80 +1,77 @@
-﻿# Employee Data Analysis
-A data analysis project that explores an employee dataset to uncover insights about salary distributions, correlations, and group differences.
 
----
+# VIETNAMESE
 
-# English
+# Tổng quan
+Dự án này phân tích hồ sơ nhân viên để trả lời các câu hỏi:
+- Lương thay đổi như thế nào theo phòng ban, giới tính và trình độ học vấn?
+- Có mối tương quan giữa tuổi và kinh nghiệm không?
+- Tỷ lệ thưởng có phụ thuộc vào hiệu suất làm việc không?
+- Sự khác biệt lương giữa các nhóm có ý nghĩa thống kê không?
 
-# Overview
-This project analyzes employee data using Python (pandas, matplotlib, seaborn, scipy). The goal is to answer key business questions:
-- What is the salary distribution across departments, genders, and education levels?
-- Is there a correlation between age and experience?
-- Does bonus percentage depend on performance?
-- Are salary differences between groups statistically significant?
+# Dữ liệu
+- Nguồn: `employees1.csv`
+- Dòng: dữ liệu cấp nhân viên
+- Cột chính: `Age`, `Experience`, `Salary`, `Performance`, `Bonus_pct`, `Department`, `Gender`, `Education`
 
-# Dataset
-- Source: `employees1.csv`
-- Rows: Employee-level data
-- Key columns: `Age`, `Experience`, `Salary`, `Performance`, `Bonus_pct`, `Department`, `Gender`, `Education`
-
-# Requirements & Installation
+# Yêu cầu và cài đặt
 
 pip install numpy pandas matplotlib seaborn scipy statsmodels
-Place employees1.csv in the same directory as the script.
+Đặt file employees1.csv cùng thư mục với script.
 
-# Usage
-Run the main script:
+# Cách chạy
+Chạy script chính:
 
 bash
-python analysis.py
-It will:
+python employees_analysis.py
+Script sẽ:
 
-Display general information and missing values
+Hiển thị thông tin chung và giá trị thiếu
 
-Impute missing values with medians
+Điền giá trị thiếu bằng trung vị
 
-Produce visualizations:
+Tạo các biểu đồ:
 
-Distributions of numerical variables
+Phân phối của các biến số
 
-Boxplot for salary outliers
+Hộp (boxplot) phát hiện ngoại lệ tiền lương
 
-Heatmap of correlation between Age and Experience
+Heatmap tương quan giữa Tuổi và Kinh nghiệm
 
-Scatter plot of Salary vs Experience with trend line
+Biểu đồ tán xạ Lương theo Kinh nghiệm kèm đường xu hướng
 
-Bar charts of mean salary by Department, Gender, and Education
+Biểu đồ cột lương trung bình theo Phòng ban, Giới tính, Học vấn
 
-Pivot table heatmap of mean salary by Department and Education
+Heatmap lương trung bình theo Phòng ban và Học vấn
 
-Scatter plot of Bonus percentage vs Performance
+Biểu đồ tán xạ Tỷ lệ thưởng theo Hiệu suất
 
-Perform statistical tests:
+Thực hiện kiểm định thống kê:
 
-Shapiro-Wilk test for normality of Salary
+Kiểm định Shapiro-Wilk để kiểm tra phân phối chuẩn của Lương
 
-Mann-Whitney U test comparing male and female salaries
+Kiểm định Mann-Whitney U so sánh lương nam và nữ
 
-Kruskal-Wallis test comparing salaries across departments, followed by Tukey HSD post-hoc if significant
+Kiểm định Kruskal-Wallis so sánh lương giữa các phòng ban, sau đó dùng Tukey HSD nếu có ý nghĩa
 
-Print summary statistics and test results to the console
+In kết quả ra màn hình console
 
-# Key Findings
-Salary distribution is right-skewed with outliers.
+# Phát hiện chính
+Phân phối lương lệch phải và có ngoại lệ.
 
-Age and Experience have a strong positive correlation.
+Tuổi và kinh nghiệm có tương quan dương mạnh.
 
-Departments show clear differences in average salary; statistical tests confirm significant differences among at least some departments.
+Có sự khác biệt lương có ý nghĩa thống kê giữa các phòng ban.
 
-Gender salary difference: test results indicate whether a statistically significant gap exists.
+Chênh lệch lương theo giới tính đã được kiểm định; kết quả cho biết sự khác biệt có ý nghĩa hay không.
 
-Education level correlates with higher average salary.
+Trình độ học vấn cao hơn gắn với mức lương trung bình cao hơn.
 
-Bonus percentage does not show a clear linear relationship with performance score.
+Tỷ lệ thưởng không thể hiện mối quan hệ tuyến tính rõ ràng với điểm hiệu suất.
 
-# File Structure
+# Cấu trúc thư mục
 text
-.
-├── employees1.csv          # Raw dataset
-├── analysis.py             # Main analysis script
-└── README.md               # This file
+employees_analysis/
+├── employees1.csv
+├── employees_analysis.py
+└── README.md
+
