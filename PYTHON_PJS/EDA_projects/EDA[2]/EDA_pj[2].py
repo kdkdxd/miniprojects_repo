@@ -108,8 +108,8 @@ plt.show
 plt.suptitle("Analysis Revenue acc Category", fontname = "Arial", fontsize = 17, fontweight = "bold")
 plt.tight_layout()
 plt.show
-
-
+#
+#
 print(df.head(10))   #first 10 rows
 
 #Top 10 best seller
