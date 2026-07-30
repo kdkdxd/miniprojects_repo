@@ -42,7 +42,7 @@ plt.show()
 
 X_train, X_test, y_train, y_test = train_test_split(
     X,y,
-    test_size=0.2,
+    test_size=0.2,             # chia ra 20% test, 80% train
     random_state=42
 )
 
@@ -76,11 +76,42 @@ def compute_cost(x, y, w, b):
 
 # Trích riêng cột bmi để train (Simple Linear Regression)
 bmi_idx = feature_names.index('bmi')  # lấy index của cột bmi
-x_bmi_train = X_train[:, bmi_idx]
+x_bmi_train = X_train[:, bmi_idx]     # lấy cột bmi của X_train
 x_bmi_test = X_test[:, bmi_idx]
 
-cost_at_zero = compute_cost(x_bmi_train, y_train, w=14, b=6)
-print(f"\nCost  {round(cost_at_zero, 2)}")
+cost_at_zero = compute_cost(x_bmi_train, y_train, w=0, b=0)   # Tinh MSE (Cost Function)
+print(f"\nCost at w=0 and b=0 {round(cost_at_zero, 2)}")
+
+# Số càng lớn thì Đường Hồi Quy tệ, reverse
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
