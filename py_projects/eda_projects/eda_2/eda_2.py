@@ -5,7 +5,7 @@ import seaborn as sns
 import scipy.stats as stats
 import sys
 
-
+#what 1704
 sys.stdout.reconfigure(encoding="utf-8")
 np.random.seed(1704)
 
