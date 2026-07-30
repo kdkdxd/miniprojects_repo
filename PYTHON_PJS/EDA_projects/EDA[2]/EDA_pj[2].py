@@ -110,7 +110,7 @@ plt.tight_layout()
 plt.show
 
 
-print(df.head(10))
+print(df.head(10))   #first 10 rows
 
 #Top 10 best seller
 product_stats1 = df.groupby("Product").agg(
