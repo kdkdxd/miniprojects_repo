@@ -83,7 +83,7 @@ plt.show
 
 print(f"\nBest seller : {max(categories)} ")
  
-#Total orders
+#Total orders per categories
 ax2 = axes[1]
 sns.barplot(x=categories, y = cat_stats["count_re"], palette="Set2", ax=ax2, edgecolor = "white", width = 0.6)
 for bar2, val2 in zip(ax2.patches, cat_stats["count_re"]):
