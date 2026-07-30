@@ -121,6 +121,7 @@ ax.set_title("Salary According to Department", fontname = "Arial", fontsize = 18
 ax.set_ylabel("Salary (Million VND)", fontname = "Arial", fontsize = 12, fontweight = "bold")
 ax.set_xlabel("Department", fontname = "Arial", fontsize = 12, fontweight = "bold")
 plt.show()
+
 # Difference between Male and Female Salary
 
 gensa = (cleaned_em.groupby("Gender")["Salary"]
@@ -172,6 +173,7 @@ ax.set_title("Mean Salary accor (Edu & Department)", fontname= "Arial", fontsize
 ax.set_xlabel("Edu", fontname= "Arial", fontsize = 16)
 ax.set_ylabel("Department", fontname= "Arial", fontsize = 16)
 plt.show
+
 # Bonus depending on Performance ?
 
 fig, ax = plt.subplots(figsize = (8,5), constrained_layout = True)
