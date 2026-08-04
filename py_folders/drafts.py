@@ -43,9 +43,8 @@ plt.show()
 X_train, X_test, y_train, y_test = train_test_split(
     X,y,
     test_size=0.2,             # chia ra 20% test, 80% train
-    random_state=42
+    random_state=4242
 )
-
 print(f"X_train size : {X_train.shape}")
 print(f"X_test size : {X_test.shape}")
 print(f"y_train size : {y_train.shape}")
@@ -84,6 +83,62 @@ print(f"\nCost at w=0 and b=0 {round(cost_at_zero, 2)}")
 
 # Số càng lớn thì Đường Hồi Quy tệ, reverse
 
+# GRADIENT DESCENT FROM SCRATCH
+
+def gradient_descent_1var(x, y, w_init, b_init, alpha, iterations):
+    """
+    Chay Gradient Descent cho Simple Linear Regression (1 feature).
+
+    Tham so:
+        x, y        : du lieu train (mang numpy 1 chieu)
+        w_init      : gia tri KHOI TAO cua w (thuong bat dau tu 0)
+        b_init      : gia tri KHOI TAO cua b (thuong bat dau tu 0)
+        alpha       : learning rate (toc do hoc)
+        iterations  : so vong lap se chay
+
+    Tra ve:
+        w, b          : gia tri w, b SAU KHI hoan tat toan bo vong lap
+        cost_history  : list luu lai cost sau MOI vong lap, dung de VE
+                        BIEU DO hoi tu (convergence plot) o Phan 1.6
+    """
+    m = len(x)
+    w, b = w_init, b_init
+    cost_history = []
+
+    for i in range(iterations):
+        y_hat = w * x + b
+        dw = np.sum((y_hat-y) * x) / m 
+        db = np.sum((y_hat-y)) / m
+
+        w = w - alpha * dw
+        b = b - alpha * db
+
+        cost_history.append(compute_cost(x,y,w,b))
+
+    return w, b, cost_history
+
+# CHẠY THẬT với dữ liệu bmi (353 bệnh nhân trong tập train)
+w_final, b_final, cost_history = gradient_descent_1var(
+    x_bmi_train, y_train,
+    w_init=0.0, b_init= 0.0,
+    alpha=0.8,
+    iterations=10000
+)
+
+print(f'Cost tại vòng lặp đầu tiên : {round(cost_history[0],4)}')
+print(f'Cost tại vòng lặp thứ 1000 : {round(cost_history[999],4)}')
+print(f"Cost tại vòng lặp cuối : {round(cost_history[9999],4)}")
+print()
+print(f'Kết quả cuối : w = {w_final:.4f}, b = {b_final:.4f}')
+
+
+# Compare to Linear Regression
+lr_bmi = LinearRegression()
+
+lr_bmi.fit(x_bmi_train.reshape(-1,1), y_train)
+print(f'Scratch Linear Regression : w = {round(w_final, 4)}, b = {round(b_final, 4)}')
+print(f'Scikit Learn : w = {round(lr_bmi.coef_[0],4)}, b = {round(lr_bmi.intercept_,4)}')
+    
 
 
 
@@ -92,28 +147,4 @@ print(f"\nCost at w=0 and b=0 {round(cost_at_zero, 2)}")
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+    

@@ -1,0 +1,64 @@
+# California Housing Prediction
+# Code From Scratch using Linear Regression
+# Using only 1 feature (MedInc)
+
+#import
+import numpy as np
+import pandas as pd
+import matplotlib.pyplot as plt
+import seaborn as sns
+from sklearn.model_selection import train_test_split
+from sklearn.linear_model import LinearRegression
+from sklearn.datasets import fetch_california_housing
+
+#data
+data = fetch_california_housing()
+X = data.data
+y = data.target
+feature_names = list(data.feature_names)
+print(f'\nShape X (feature) : {X.shape}')
+print(f'y shape (target) : {y.shape}')
+print(f'Feature names : {feature_names}')
+print(f'First 5 sample : {X.shape[0]}')
+print(f'Real target of first 5 sample : {y.shape[0]}')
+print('\n')
+
+
+# EDA - Exploratory Dara Analysis
+df = pd.DataFrame(X, columns = feature_names)
+df['Target'] = y
+print(f'First 5 rows : \n{df.head()}')
+print(f'General Statistics : \n{df.describe().round(4)}')
+
+# seperate cols
+num_cols = df.select_dtypes(include=[np.number]).columns.tolist()
+cat_cols = df.select_dtypes(include=object).columns.tolist()
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
