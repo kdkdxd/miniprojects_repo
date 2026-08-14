@@ -135,7 +135,7 @@ print(f'Kết quả cuối : w = {w_final:.4f}, b = {b_final:.4f}')
 # Compare to Linear Regression
 lr_bmi = LinearRegression()
 
-lr_bmi.fit(x_bmi_train.reshape(-1,1), y_train)
+lr_bmi.fit(x_bmi_train.reshape(-1,1), y_train)  
 print(f'Scratch Linear Regression : w = {round(w_final, 4)}, b = {round(b_final, 4)}')
 print(f'Scikit Learn : w = {round(lr_bmi.coef_[0],4)}, b = {round(lr_bmi.intercept_,4)}')
     

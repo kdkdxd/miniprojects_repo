@@ -19,8 +19,8 @@ feature_names = list(data.feature_names)
 print(f'\nShape X (feature) : {X.shape}')
 print(f'y shape (target) : {y.shape}')
 print(f'Feature names : {feature_names}')
-print(f'First 5 sample : {X.shape[0]}')
-print(f'Real target of first 5 sample : {y.shape[0]}')
+print(f'First sample : {X.shape[0]}')
+print(f'Real target of first sample : {y.shape[0]}')
 print('\n')
 
 
@@ -28,37 +28,105 @@ print('\n')
 df = pd.DataFrame(X, columns = feature_names)
 df['Target'] = y
 print(f'First 5 rows : \n{df.head()}')
-print(f'General Statistics : \n{df.describe().round(4)}')
+print(f'\nGeneral Statistics : \n{df.describe().round(4)}')
 
-# seperate cols
-num_cols = df.select_dtypes(include=[np.number]).columns.tolist()
-cat_cols = df.select_dtypes(include=object).columns.tolist()
-
-
-
-
+corr_with_target = df.corr()['Target'].sort_values(ascending=False)
+corr_with_target = corr_with_target.drop(index='Target')
+print(f'\nHệ số tương quan giữa các features và Target:')
+print(f'{corr_with_target.round(4)}')
+print(f'\nHighest Corr : {max(corr_with_target.round(4).values)} - from {corr_with_target.idxmax()} ')
 
 
+plt.figure(figsize = (10,8),constrained_layout = True)
+sns.heatmap(df.corr(), annot=True, fmt= '.2f', cmap='coolwarm',center=0)
+plt.title('Corr Matrix between Features and Target', fontsize = 14, fontname = 'Arial', fontweight='bold')
+plt.show()
+
+# Split the data
+X_train, X_test, y_train, Y_test = train_test_split(
+    X,y,
+    test_size=0.2,
+    random_state=42
+)
+
+print(f'\nX_train size : {X_train.shape}')
+print(f'X_test size : {X_test.shape}')
+print(f'y_train size : {y_train.shape}')
+print(f'y_test size : {Y_test.shape}')
+
+# Cost Function
+def cost_function(x,y,w,b):
+    m = len(x)
+    y_hat = w*x + b
+    cost = np.sum((y_hat-y)**2) / (m*2)
+    return cost
 
 
+# Take the MedInc column data
+bmi_inx = feature_names.index('MedInc')
+X_med_inc_train = X_train[:, bmi_inx]
+X_med_inc_test = X_test[:, bmi_inx]
+
+# cost at w = 0, b = 0
+cost_at_0 = cost_function(X_med_inc_train,y_train,w=0,b=0)
+print(f"\nCost at w=0 and b=0 {round(cost_at_0, 2)}")  # = 2.81  pretty good
+
+# Gradient Descent Function (1 val)
+def gradient_descent_1val(x,y,w_init,b_init,alpha,iterations):
+    m = len(x)
+    w,b = w_init, b_init
+    cost_history = []
+
+    for i in range(iterations):
+        y_hat = w * x + b
+        dw = np.sum((y_hat - y) * x) / m
+        db = np.sum((y_hat - y)) / m
+
+        w = w - alpha * dw
+        b = b - alpha * db
+
+        cost_history.append(cost_function(x,y,w,b))
+    return w, b, cost_history
 
 
+w_final, b_final, cost_history = gradient_descent_1val(
+    X_med_inc_train, y_train,
+    w_init=0.0, b_init=0.0,
+    alpha=0.01, iterations=10000
+)
+
+print(f'\nFinal : w = {w_final:.4f}, b = {b_final:.4f}')
+
+lr_medinc = LinearRegression()
+lr_medinc.fit(X_med_inc_train.reshape(-1,1),y_train)
+print(f'Scratch Linear Regression : w = {round(w_final, 4)}, b = {round(b_final, 4)}')
+print(f'Scikit Learn : w = {round(lr_medinc.coef_[0],4)}, b = {round(lr_medinc.intercept_,4)}')
+print(f'Final Cost : {cost_history[9999]}')
+
+print(f'\n\n\n\n')
 
 
+# CONVERGENCE PLOT
 
+# Trực quan hóa Đường cong hội tụ của Cost
+plt.figure(figsize=(10,5), constrained_layout=True)
+plt.plot(range(len(cost_history)), cost_history, color = 'steelblue', linewidth = 2)
+plt.xlabel('Iterations', fontname = 'Arial', fontsize = 10, fontweight = 'bold')
+plt.ylabel('Cost(w,b)',fontname = 'Arial', fontsize = 9, fontweight = 'bold')
+plt.grid(True, alpha = 0.5)
+plt.show()
 
+# REGRESSION LINE IN REAL DATA
 
-
-
-
-
-
-
-
-
-
-
-
-
-
+plt.figure(figsize=(10,8))
+plt.scatter(X_med_inc_train, y_train, alpha=0.5, color = 'cornflowerblue', label = 'ReLine in Real Data')
+x_line = np.linspace(X_med_inc_test.min(), X_med_inc_train.max(), 100)
+y_line = w_final * x_line + b_final
+plt.plot(x_line, y_line, color = 'crimson', linewidth = 2.5, label = f'ReLine: w_fi = {w_final:.4f}, b_fi = {b_final:.4f}')
+plt.xlabel('BMI(standardized)', fontname = 'Arial', fontweight = 'bold',fontsize = 12 )
+plt.ylabel('Target', fontname = 'Arial', fontweight = 'bold', fontsize = 12)
+plt.title('Simple Linear Regression', fontname = 'Arial', fontsize = 16, fontweight = 'bold')
+plt.legend()
+plt.tight_layout()
+plt.show()
 
